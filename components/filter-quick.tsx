@@ -14,7 +14,6 @@ import { capitalize } from "@/utils/helpers";
 export const QUICK_FILTER_TYPES: string[] = [
   "ONLY MY ISSUES",
   "RECENTLY UPDATED",
-  "NO SUBTASKS",
 ];
 
 const QuickFilter: React.FC = () => {
