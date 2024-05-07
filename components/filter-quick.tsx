@@ -9,7 +9,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { CountBall } from "@/components/issue/issue-status-count";
 import { FaChevronDown } from "react-icons/fa";
-import type { IssueType } from "@/utils/types";
 import { capitalize } from "@/utils/helpers";
 
 export const QUICK_FILTER_TYPES: string[] = [
@@ -17,21 +16,20 @@ export const QUICK_FILTER_TYPES: string[] = [
   "RECENTLY UPDATED",
   "NO SUBTASKS",
 ];
-const SUBTASK_OPTIONS: IssueType["type"][] = ["SUBTASK"];
 
 const QuickFilter: React.FC = () => {
   const { quickFilters, setQuickFilters } = useFiltersContext();
 
   function onSelectChange(
     e: React.ChangeEvent<HTMLInputElement>,
-    issueType: string
+    selectedQuickFilter: string
   ) {
     if (e.target.checked) {
-      setQuickFilters((prev) => [...prev, issueType]);
+      setQuickFilters((prev) => [...prev, selectedQuickFilter]);
     } else {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       setQuickFilters((prev) => {
-        return prev.filter((type) => type !== issueType);
+        return prev.filter((type) => type !== selectedQuickFilter);
       });
     }
   }
@@ -57,33 +55,29 @@ const QuickFilter: React.FC = () => {
           align="start"
           className="z-10 mt-2 w-52 rounded-[3px] border-[0.3px] bg-white py-4 shadow-md"
         >
-          {QUICK_FILTER_TYPES.map((type) => (
+          {QUICK_FILTER_TYPES.map((quickFilterType) => (
             <DropdownItem
               onSelect={(e) => e.preventDefault()}
-              key={type}
-              className="px-3 py-1.5 text-sm hover:bg-gray-100"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                onSelectChange(e, type)
-              }
+              key={quickFilterType}
+              className="text-sm hover:bg-gray-100"
             >
-              <div className="flex items-center gap-x-2 hover:cursor-default">
-                <label htmlFor="issue-type-filter" className="sr-only">
-                  Issue type filter checkbox
-                </label>
+              <label
+                htmlFor={`issue-type-filter-${quickFilterType}`}
+                className="flex cursor-pointer items-center gap-x-2 px-3 py-1.5 "
+              >
                 <input
                   type="checkbox"
-                  id="issue-type-filter"
+                  id={`issue-type-filter-${quickFilterType}`}
                   className="form-checkbox h-3 w-3 rounded-sm text-inprogress"
-                  checked={quickFilters.includes(type)}
+                  checked={quickFilters.includes(quickFilterType)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    onSelectChange(e, quickFilterType)
+                  }
                 />
-
-                {/*<IssueIcon issueType={type} />*/}
-                {/*<TooltipWrapper text={capitalize(type)}>*/}
                 <span className="text-sm text-gray-700">
-                  {capitalize(type)}
+                  {capitalize(quickFilterType)}
                 </span>
-                {/*</TooltipWrapper>*/}
-              </div>
+              </label>
             </DropdownItem>
           ))}
         </DropdownContent>

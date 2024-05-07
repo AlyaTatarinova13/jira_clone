@@ -25,8 +25,8 @@
 - Create an empty `.env` file inside the root dir `/`, copy `/.env.example` contents into it, and fill in the variables needed.
 - `npm install`
 - install and set MySQL, create a DB, update `.env`
-- create Clerk account, create an application there,  update `.env`
-- create Upstash account, create a db there,  update `.env`
+- create Clerk account, create an application there, update `.env`
+- create Upstash account, create a db there, update `.env`
 - `npx prisma generate`
 - `npx prisma migrate dev --name init`
 - `npx prisma db seed`

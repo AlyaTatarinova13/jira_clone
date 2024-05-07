@@ -19,6 +19,7 @@ import {
   isNullish,
   isSubtask,
   issueIsNotForCurrentUser,
+  issueIsNotRecentlyUpdated,
   issueNotInSearch,
   issueSprintNotInFilters,
   issueTypeNotInFilters,
@@ -72,21 +73,29 @@ const Board: React.FC = () => {
           if (issueSprintNotInFilters({ issue, sprintIds: filterSprints })) {
             return false;
           }
-          if (
-            quickFilters.length > 0 &&
-            quickFilters?.includes("ONLY MY ISSUES") &&
-            issueIsNotForCurrentUser({ issue, currentUser })
-          ) {
-            return false;
+          if (quickFilters.length > 0) {
+            if (
+              quickFilters?.includes("ONLY MY ISSUES") &&
+              issueIsNotForCurrentUser({ issue, currentUser })
+            ) {
+              return false;
+            }
+
+            if (
+              quickFilters?.includes("RECENTLY UPDATED") &&
+              issueIsNotRecentlyUpdated({ issue })
+            ) {
+              return false;
+            }
           }
 
           return true;
         }
         return false;
       });
-
       return filteredIssues;
     },
+
     [search, assignees, epics, issueTypes, filterSprints, quickFilters]
   );
 
