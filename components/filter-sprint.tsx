@@ -15,7 +15,6 @@ import { type Sprint } from "@prisma/client";
 const SprintFilter: React.FC = () => {
   const { sprints: filterSprints, setSprints } = useFiltersContext();
   const { sprints } = useSprints();
-
   function filterActiveSprints(sprint: Sprint) {
     return sprint.status === "ACTIVE";
   }

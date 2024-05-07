@@ -2,6 +2,7 @@ import { type IssueCountType } from "./types";
 import { type IssueType } from "@/utils/types";
 import { type clerkClient } from "@clerk/nextjs";
 import { type DefaultUser, type Issue } from "@prisma/client";
+import { type UserResource } from "@clerk/types";
 
 type Value<T> = T extends Promise<infer U> ? U : T;
 
@@ -68,7 +69,9 @@ export function isNullish<T>(
 }
 
 export function filterUserForClient(
-  user: Value<ReturnType<Awaited<typeof clerkClient.users.getUser>>>
+  user:
+    | Value<ReturnType<Awaited<typeof clerkClient.users.getUser>>>
+    | UserResource
 ) {
   return <DefaultUser>{
     id: user.id,
@@ -125,6 +128,16 @@ export function issueTypeNotInFilters({
   issueTypes: string[];
 }) {
   return issueTypes.length && !issueTypes.includes(issue.type);
+}
+
+export function issueIsNotForCurrentUser({
+  issue,
+  currentUser,
+}: {
+  issue: IssueType;
+  currentUser: DefaultUser;
+}) {
+  return issue.assigneeId != currentUser?.id;
 }
 
 export function issueSprintNotInFilters({

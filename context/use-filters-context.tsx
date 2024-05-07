@@ -15,6 +15,8 @@ type FiltersContextProps = {
   setIssueTypes: React.Dispatch<React.SetStateAction<IssueType["type"][]>>;
   sprints: Sprint["id"][];
   setSprints: React.Dispatch<React.SetStateAction<Sprint["id"][]>>;
+  quickFilters: string[];
+  setQuickFilters: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
 const FiltersContext = createContext<FiltersContextProps>({
@@ -33,6 +35,9 @@ const FiltersContext = createContext<FiltersContextProps>({
   sprints: [],
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setSprints: () => {},
+  quickFilters: [],
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setQuickFilters: () => {},
 });
 
 export const FiltersProvider = ({ children }: { children: ReactNode }) => {
@@ -41,6 +46,7 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
   const [epics, setEpics] = useState<IssueType["id"][]>([]);
   const [issueTypes, setIssueTypes] = useState<IssueType["type"][]>([]);
   const [sprints, setSprints] = useState<Sprint["id"][]>([]);
+  const [quickFilters, setQuickFilters] = useState<string[]>([]);
 
   return (
     <FiltersContext.Provider
@@ -55,6 +61,8 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
         setIssueTypes,
         sprints,
         setSprints,
+        quickFilters,
+        setQuickFilters,
       }}
     >
       {children}

@@ -11,6 +11,7 @@ import { SprintFilter } from "../filter-sprint";
 import { NotImplemented } from "../not-implemented";
 import { Button } from "../ui/button";
 import { BiLineChart } from "react-icons/bi";
+import {QuickFilter} from "@/components/filter-quick";
 
 const BoardHeader: React.FC<{ project: Project }> = ({ project }) => {
   const { search, setSearch } = useFiltersContext();
@@ -25,6 +26,7 @@ const BoardHeader: React.FC<{ project: Project }> = ({ project }) => {
           <EpicFilter />
           <IssueTypeFilter />
           <SprintFilter />
+          <QuickFilter />
           <ClearFilters />
         </div>
         <NotImplemented feature="insights">
