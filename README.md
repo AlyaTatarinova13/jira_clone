@@ -4,8 +4,16 @@
 
 ![App screenshot](./assets/readme/backlog-screenshot.png)
 
-## Features
+The source repository is here `https://github.com/sebastianfdz/jira_clone`.
 
+**This repo is extended with several new filters:**
+- added new section Quick filters;
+- added new filters: "My issues only" and "Recently updated"
+- fixed errors in console related to displaying checkboxes
+
+![App screenshot](./assets/readme/quick-filters.png)
+
+## Features
 - Written in modern React
 - Uses Next js 13.4 app directory structure
 - Explores basic React Server Components
@@ -20,43 +28,16 @@
 
 ## Setting up development environment
 
-- Project uses Prisma, you can decide which database to use. \*By default it uses the 'mysql' provider
-- `git clone https://github.com/sebastianfdz/jira_clone`
-- Create an empty `.env` file inside the root dir `/`, copy `/.env.example` contents into it, and fill in the variables needed.
+Project uses Prisma, you can decide which database to use. \*By default it uses the 'mysql' provider
+- `git clone https://github.com/AlyaTatarinova13/jira_clone`
+- create an empty `.env` file inside the root dir `/`, copy `/.env.example` contents into it.
 - `npm install`
-- install and set MySQL, create a DB, update `.env`
-- create Clerk account, create an application there, update `.env`
-- create Upstash account, create a db there, update `.env`
+- install and set **MySQL**, create an empty DB, update `.env` with DB URL (https://www.prisma.io/docs/reference/database-reference/connection-urls#env)
+- create a **Clerk** account, create an application there, update `.env` with public and secret keys (https://clerk.com/docs/nextjs/set-environment-keys)
+- create **Upstash** account, create a db there, update `.env` with url and token (https://console.upstash.com/)
 - `npx prisma generate`
 - `npx prisma migrate dev --name init`
 - `npx prisma db seed`
-- Lookup 'USE THIS IF RUNNING LOCALLY' inside the project and follow the instructions.
+- lookup 'USE THIS IF RUNNING LOCALLY' inside the project and follow the instructions.
 - `npm run dev`
-- App should now be running on `http://localhost:3000/`
-
-## What's Pending?
-
-There are features pending from this showcase product which should exist in a real product:
-
-### Unit/Integration tests
-
-Unit and integration tests are currently in progress... The app will be using [Vitest](https://vitest.dev/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
-
-### End to end tests
-
-End to end tests are currently in progress as well... The app will be using [Cypress](https://www.cypress.io/).
-
-## Contributing
-
-Contributions to this project are welcome. Feel free to submit bug reports, feature requests, or pull requests to help improve the app.
-
-## Acknowledgements
-
-- Inspired by @oldboyxx's https://github.com/oldboyxx/jira_clone
-- App was initially bootstrapped with T3's [create-t3-app](https://create.t3.gg/)
-
-## License
-
-This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
-
-<hr>
+- The app should now be running on `http://localhost:3000/`
