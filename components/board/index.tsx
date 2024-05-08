@@ -1,6 +1,6 @@
 "use client";
 import React, { Fragment, useCallback, useLayoutEffect, useRef } from "react";
-import { type IssueStatus } from "@prisma/client";
+import { type DefaultUser, type IssueStatus } from "@prisma/client";
 import "@/styles/split.css";
 import { BoardHeader } from "./header";
 import {
@@ -13,10 +13,13 @@ import { type IssueType } from "@/utils/types";
 import {
   assigneeNotInFilters,
   epicNotInFilters,
+  filterUserForClient,
   insertItemIntoArray,
   isEpic,
   isNullish,
   isSubtask,
+  issueIsNotForCurrentUser,
+  issueIsNotRecentlyUpdated,
   issueNotInSearch,
   issueSprintNotInFilters,
   issueTypeNotInFilters,
@@ -28,6 +31,7 @@ import { useSprints } from "@/hooks/query-hooks/use-sprints";
 import { useProject } from "@/hooks/query-hooks/use-project";
 import { useFiltersContext } from "@/context/use-filters-context";
 import { useIsAuthenticated } from "@/hooks/use-is-authed";
+import { useUser } from "@clerk/clerk-react";
 
 const STATUSES: IssueStatus[] = ["TODO", "IN_PROGRESS", "DONE"];
 
@@ -43,7 +47,14 @@ const Board: React.FC = () => {
     issueTypes,
     epics,
     sprints: filterSprints,
+    quickFilters,
   } = useFiltersContext();
+  const user = useUser()?.user;
+  let currentUser: DefaultUser;
+
+  if (user !== null && user !== undefined) {
+    currentUser = filterUserForClient(user);
+  }
 
   const filterIssues = useCallback(
     (issues: IssueType[] | undefined, status: IssueStatus) => {
@@ -62,14 +73,30 @@ const Board: React.FC = () => {
           if (issueSprintNotInFilters({ issue, sprintIds: filterSprints })) {
             return false;
           }
+          if (quickFilters.length > 0) {
+            if (
+              quickFilters?.includes("ONLY MY ISSUES") &&
+              issueIsNotForCurrentUser({ issue, currentUser })
+            ) {
+              return false;
+            }
+
+            if (
+              quickFilters?.includes("RECENTLY UPDATED") &&
+              issueIsNotRecentlyUpdated({ issue })
+            ) {
+              return false;
+            }
+          }
+
           return true;
         }
         return false;
       });
-
       return filteredIssues;
     },
-    [search, assignees, epics, issueTypes, filterSprints]
+
+    [search, assignees, epics, issueTypes, filterSprints, quickFilters]
   );
 
   const { updateIssue } = useIssues();
