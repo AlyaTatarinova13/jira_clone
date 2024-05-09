@@ -6,6 +6,35 @@ import { AiFillGithub, AiFillStar } from "react-icons/ai";
 import { useFullURL } from "@/hooks/use-full-url";
 import { useEffect, useState } from "react";
 
+import { useTheme } from "next-themes";
+
+const ThemeSwitch = () => {
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  return (
+    <select
+      value={theme}
+      onChange={(e) => {
+        return setTheme(e.target.value);
+      }}
+    >
+      <option value="system">System</option>
+      <option value="dark">Dark</option>
+      <option value="light">Light</option>
+    </select>
+  );
+};
+
 const TopNavbar: React.FC = () => {
   const { user } = useUser();
   const [url] = useFullURL();
@@ -63,6 +92,7 @@ const TopNavbar: React.FC = () => {
       </div>
       {user ? (
         <div className="flex items-center gap-x-2">
+          <ThemeSwitch />
           <span className="text-sm font-medium text-gray-600">
             {user?.fullName ?? user?.emailAddresses[0]?.emailAddress ?? "Guest"}
           </span>
