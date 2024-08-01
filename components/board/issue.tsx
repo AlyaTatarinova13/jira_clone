@@ -28,17 +28,17 @@ const Issue: React.FC<{ issue: IssueType; index: number }> = ({
           {...dragHandleProps}
           className={clsx(
             isDragging && "bg-white",
-            "group my-0.5 max-w-full rounded-[3px] border-[0.3px] border-gray-300 bg-white p-2 text-sm shadow-sm shadow-gray-300 hover:bg-gray-200 "
+            "group my-0.5 max-w-full rounded-[3px] border-[0.3px] border-gray-300 bg-white p-2 text-sm shadow-sm shadow-gray-300 hover:bg-gray-200 dark:border-gray-950 dark:bg-gray-800 dark:shadow-gray-900"
           )}
         >
           <div className="flex items-start justify-between">
-            <span className="mb-2">{issue.name}</span>
+            <span className="mb-2 dark:text-gray-300">{issue.name}</span>
             <IssueDropdownMenu issue={issue}>
               <DropdownTrigger
                 asChild
                 className="rounded-m flex h-fit items-center gap-x-2 bg-opacity-30 px-1.5 text-xs font-semibold focus:ring-2"
               >
-                <div className="invisible rounded-sm px-1.5 py-1.5 text-gray-700 group-hover:visible group-hover:bg-gray-100 group-hover:hover:bg-gray-300 [&[data-state=open]]:visible [&[data-state=open]]:bg-gray-700 [&[data-state=open]]:text-white">
+                <div className="invisible rounded-sm px-1.5 py-1.5 text-gray-700 group-hover:visible group-hover:bg-gray-100 group-hover:hover:bg-gray-300 dark:text-gray-400 dark:group-hover:bg-gray-700 dark:group-hover:hover:bg-gray-700 [&[data-state=open]]:visible [&[data-state=open]]:bg-gray-700 [&[data-state=open]]:text-white dark:[&[data-state=open]]:text-gray-300">
                   <BsThreeDots className="sm:text-xl" />
                 </div>
               </DropdownTrigger>
@@ -52,12 +52,12 @@ const Issue: React.FC<{ issue: IssueType; index: number }> = ({
           <div className="mt-3 flex items-center justify-between">
             <div className="flex items-center gap-x-3">
               <IssueIcon issueType={issue.type} />
-              <span className="text-xs font-medium text-gray-600">
+              <span className="text-xs font-medium text-gray-600 dark:text-gray-300">
                 {issue.key}
               </span>
             </div>
             <Avatar
-              size={20}
+              size={32}
               src={issue.assignee?.avatar}
               alt={issue.assignee?.name ?? "Unassigned"}
             />

@@ -49,7 +49,7 @@ const SprintDropdownMenu: React.FC<SprintDropdownMenuProps> = ({
             side="top"
             sideOffset={5}
             align="end"
-            className="z-10 w-fit rounded-md border border-gray-300 bg-white shadow-md"
+            className="z-10 w-fit rounded-md border border-gray-300 bg-white shadow-md dark:bg-gray-800"
           >
             <DropdownLabel className="sr-only">ACTIONS</DropdownLabel>
             <DropdownGroup>
@@ -59,7 +59,7 @@ const SprintDropdownMenu: React.FC<SprintDropdownMenuProps> = ({
                   key={action.id}
                   textValue={action.label}
                   className={clsx(
-                    "border-transparent px-4 py-2 text-sm hover:cursor-default hover:bg-gray-100"
+                    "border-transparent px-4 py-2 text-sm hover:cursor-default hover:bg-gray-100 dark:text-gray-300  dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
                   )}
                 >
                   <span className={clsx("pr-2 text-sm")}>{action.label}</span>

@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useIssues } from "@/hooks/query-hooks/use-issues";
 import { FaChevronDown } from "react-icons/fa";
 import clsx from "clsx";
@@ -19,13 +19,14 @@ import {
   SelectViewport,
 } from "@/components/ui/select";
 import { useIsAuthenticated } from "@/hooks/use-is-authed";
+import { useTheme } from "next-themes";
 
-export const statuses: StatusObject[] = [
+export let statuses: StatusObject[] = [
   {
     value: "TODO",
     smBgColor: "#f5f5f5",
     lgBgColor: "#f5f5f5",
-    smTextColor: "#383939",
+    smTextColor: "#424040",
     lgTextColor: "#383939",
   },
   {
@@ -74,6 +75,36 @@ const IssueSelectStatus: React.FC<{
 
   const { updateIssue, isUpdating } = useIssues();
   const [isAuthenticated, openAuthModal] = useIsAuthenticated();
+  const { theme } = useTheme();
+  // setStatusesColors();
+  //
+  // function setStatusesColors(): void {
+  //   if (theme === "dark") {
+      statuses = [
+        {
+          value: "TODO",
+          smBgColor: "#374151cc",
+          lgBgColor: "#374151cc",
+          smTextColor: "#d1d5db",
+          lgTextColor: "#d1d5db",
+        },
+        {
+          value: "IN_PROGRESS",
+          smBgColor: "#0854cc",
+          lgBgColor: "#0854cc",
+          smTextColor: "#e0ecfc",
+          lgTextColor: "#e0ecfc",
+        },
+        {
+          value: "DONE",
+          smBgColor: "#e8fcec",
+          lgBgColor: "#08845c",
+          smTextColor: "#08845c",
+          lgTextColor: "#fff",
+        },
+      ];
+    // }
+  // }
 
   function handleSelectChange(value: IssueType["status"]) {
     if (!isAuthenticated) {
@@ -120,7 +151,7 @@ const IssueSelectStatus: React.FC<{
         </SelectTrigger>
         <SelectPortal className="z-50">
           <SelectContent position="popper">
-            <SelectViewport className="w-60 rounded-md border border-gray-300 bg-white pt-2 shadow-md">
+            <SelectViewport className="w-60 rounded-md border border-gray-300 bg-white pt-2 shadow-md dark:bg-gray-800 dark:text-gray-300">
               <SelectGroup>
                 {statuses.map((status) => (
                   <SelectItem
@@ -130,21 +161,21 @@ const IssueSelectStatus: React.FC<{
                       status.value == selected.value ? "checked" : "unchecked"
                     }
                     className={clsx(
-                      "border-l-[3px] border-transparent py-1 pl-2 text-sm hover:cursor-default hover:border-blue-600 hover:bg-gray-100 [&[data-state=checked]]:border-blue-600"
+                      "cursor-pointer  border-l-[3px] border-transparent py-1 pl-2 text-sm hover:cursor-default hover:border-blue-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 [&[data-state=checked]]:border-blue-600 dark:[&[data-state=checked]]:bg-gray-700"
                     )}
                   >
                     <span
                       style={{ color: status.smTextColor }}
-                      className="rounded-md bg-opacity-30 px-2 text-xs font-semibold"
+                      className="rounded-md bg-opacity-30 px-2 text-xs font-semibold dark:font-bold dark:brightness-200"
                     >
                       {statusMap[status.value]}
                     </span>
                   </SelectItem>
                 ))}
               </SelectGroup>
-              <SelectSeparator className="mt-2 h-[1px] bg-gray-300" />
+              <SelectSeparator className="mt-2 h-[0.5px] bg-gray-300 dark:bg-gray-600" />
               <NotImplemented feature="workflow">
-                <button className="w-full border py-4 pl-5 text-left text-sm font-medium hover:cursor-default hover:bg-gray-100">
+                <button className="w-full border py-4 pl-5 text-left text-sm font-medium hover:cursor-default hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
                   View Workflow
                 </button>
               </NotImplemented>

@@ -53,7 +53,7 @@ const IssueTitle = React.forwardRef<HTMLInputElement, IssueTitleProps>(
               id="issue-title"
               value={currentTitle}
               onChange={(e) => setCurrentTitle(e.target.value)}
-              className="w-full min-w-max whitespace-pre-wrap px-1 py-1.5 outline-2 outline-blue-400"
+              className="w-full min-w-max whitespace-pre-wrap px-1 py-2 outline-2 outline-blue-400 dark:bg-gray-700 dark:bg-opacity-40 dark:text-gray-300 dark:focus:bg-gray-800 dark:focus:bg-opacity-40 "
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   handleNameChange(e);
@@ -65,7 +65,7 @@ const IssueTitle = React.forwardRef<HTMLInputElement, IssueTitleProps>(
             />
             <div className="absolute -bottom-10 right-0 z-10 flex gap-x-1">
               <Button
-                className="mt-2 aspect-square bg-gray-50 p-2.5 shadow-md transition-all hover:bg-gray-100"
+                className="mt-2 aspect-square bg-gray-50 p-2.5 shadow-md transition-all hover:bg-gray-100 dark:border-gray-900 dark:bg-gray-700 dark:bg-opacity-80 dark:text-gray-300"
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsEditing(false);
@@ -76,7 +76,7 @@ const IssueTitle = React.forwardRef<HTMLInputElement, IssueTitleProps>(
                 <MdClose className="text-sm" />
               </Button>
               <Button
-                className="mt-2 aspect-square bg-gray-50 p-2.5 shadow-md transition-all hover:bg-gray-100"
+                className="mt-2 aspect-square bg-gray-50 p-2.5 shadow-md transition-all hover:bg-gray-100 dark:border-gray-900 dark:bg-gray-700 dark:bg-opacity-80 dark:text-gray-300"
                 onClick={handleNameChange}
                 customColors
                 customPadding

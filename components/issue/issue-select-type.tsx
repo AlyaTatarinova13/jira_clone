@@ -39,7 +39,7 @@ const IssueSelectType: React.FC<{
         text={`${capitalize(selected)} - Change issue type`}
         side="top"
       >
-        <SelectTrigger className="flex items-center gap-x-1 rounded-[3px] bg-opacity-30 p-1.5 text-xs font-semibold text-white hover:bg-gray-200 focus:ring-2">
+        <SelectTrigger className="flex items-center gap-x-1 rounded-[3px] bg-opacity-30 p-1.5 text-xs font-semibold text-white hover:bg-gray-200 focus:ring-2 dark:hover:bg-gray-700">
           <SelectValue>
             <IssueIcon issueType={selected} />
           </SelectValue>
@@ -52,8 +52,8 @@ const IssueSelectType: React.FC<{
       </TooltipWrapper>
       <SelectPortal className="z-50">
         <SelectContent position="popper">
-          <SelectViewport className="w-52 rounded-md border border-gray-300 bg-white py-2 shadow-md">
-            <span className="pl-3 text-xs text-gray-500">
+          <SelectViewport className="w-52 dark:bg-gray-800 dark:text-gray-300 rounded-md border border-gray-300 bg-white py-2 shadow-md">
+            <span className="pl-3 text-xs text-gray-500 dark:text-gray-300">
               CHANGE ISSUE TYPE
             </span>
             <SelectGroup>
@@ -63,7 +63,7 @@ const IssueSelectType: React.FC<{
                     key={type}
                     value={type}
                     className={clsx(
-                      "border-transparent py-2 pl-3 text-sm hover:cursor-default hover:bg-gray-50"
+                      "border-transparent py-2 pl-3 text-sm hover:cursor-default hover:bg-gray-50  dark:hover:bg-gray-700"
                     )}
                   >
                     <div className="flex">

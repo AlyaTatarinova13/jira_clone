@@ -22,7 +22,7 @@ const Avatar = ({ src, alt, size = 32, ...props }: AvatarProps) => {
         <div>
           <UnassignedUser
             size={size}
-            className="h-fit w-fit rounded-full bg-gray-200 text-gray-500"
+            className="h-fit w-fit rounded-full bg-gray-200 text-gray-500 dark:bg-gray-700 dark:text-gray-400"
           />
         </div>
       )}

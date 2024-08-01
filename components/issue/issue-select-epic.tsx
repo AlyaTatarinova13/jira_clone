@@ -45,7 +45,11 @@ const IssueSelectEpic: React.FC<{
       >
         <SelectTrigger
           onClick={(e) => e.stopPropagation()}
-          className="flex items-center gap-x-1 rounded-[3px] p-1.5 text-xs font-semibold text-white hover:bg-gray-200 focus:ring-2"
+          className={clsx(
+            "flex items-center gap-x-1 rounded-[3px] px-2.5 py-1.5 text-xs " +
+              "font-semibold text-white dark:text-gray-300 hover:bg-gray-200 focus:ring-2 dark:hover:bg-gray-700 dark:hover:bg-opacity-60",
+            !selected ? "dark:bg-gray-700 dark:bg-opacity-80" : ""
+          )}
         >
           <SelectValue
             defaultValue={selected ?? undefined}
@@ -57,7 +61,7 @@ const IssueSelectEpic: React.FC<{
       </TooltipWrapper>
       <SelectPortal className="z-50">
         <SelectContent position="popper">
-          <SelectViewport className="min-w-60 rounded-md border border-gray-300 bg-white pt-2 shadow-md">
+          <SelectViewport className="min-w-60 rounded-md border border-gray-300 bg-white pt-2 shadow-md dark:bg-gray-800 dark:text-gray-300">
             <span className="pl-3 text-xs text-gray-500">EPICS</span>
             <SelectGroup>
               {issues
@@ -67,7 +71,7 @@ const IssueSelectEpic: React.FC<{
                     key={issue.id}
                     value={issue.id}
                     className={clsx(
-                      "border-l-[3px] border-transparent py-2 pl-3 text-sm hover:cursor-pointer  hover:bg-gray-50 [&[data-state=checked]]:bg-gray-200"
+                      "border-l-[3px] border-transparent py-2 pl-3 text-sm hover:cursor-pointer  hover:bg-gray-50  dark:hover:bg-gray-700 [&[data-state=checked]]:bg-gray-200"
                     )}
                   >
                     <div className="flex items-center">
@@ -82,11 +86,11 @@ const IssueSelectEpic: React.FC<{
             <SelectSeparator className="mt-2 h-[1px] bg-gray-300" />
             <button
               onClick={() => handleSelect(null)}
-              className="w-full py-3 pl-4 text-left text-sm text-gray-500 hover:bg-gray-100"
+              className="w-full py-3 pl-4 text-left text-sm font-bold text-gray-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
             >
               Unlink parent
             </button>
-            <button className="w-full py-3 pl-4 text-left text-sm text-gray-500 hover:bg-gray-100">
+            <button className="w-full py-3 pl-4 text-left text-sm  font-bold text-gray-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
               View all epics
             </button>
           </SelectViewport>

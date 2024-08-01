@@ -34,10 +34,10 @@ const QuickFilter: React.FC = () => {
   }
   return (
     <Dropdown>
-      <DropdownTrigger className="rounded-[3px] [&[data-state=open]]:bg-gray-700 [&[data-state=open]]:text-white">
+      <DropdownTrigger className="dark[&[data-state=open]]:text-gray-300 rounded-[3px] dark:text-gray-300 [&[data-state=open]]:bg-gray-700 [&[data-state=open]]:text-white  dark:[&[data-state=open]]:bg-transparent dark:[&[data-state=open]]:text-gray-300">
         <Button
           customColors
-          className="flex items-center  gap-x-2 transition-all duration-200 hover:bg-gray-200"
+          className="flex items-center  gap-x-2 transition-all duration-200 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
         >
           <span className="text-sm">Quick filters</span>
           <CountBall
@@ -52,13 +52,13 @@ const QuickFilter: React.FC = () => {
         <DropdownContent
           side="bottom"
           align="start"
-          className="z-10 mt-2 w-52 rounded-[3px] border-[0.3px] bg-white py-4 shadow-md"
+          className="z-10 mt-2 w-52 rounded-[3px] border-[0.3px] bg-white py-1 shadow-md dark:bg-gray-800"
         >
           {QUICK_FILTER_TYPES.map((quickFilterType) => (
             <DropdownItem
               onSelect={(e) => e.preventDefault()}
               key={quickFilterType}
-              className="text-sm hover:bg-gray-100"
+              className="text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
             >
               <label
                 htmlFor={`issue-type-filter-${quickFilterType}`}
@@ -73,7 +73,7 @@ const QuickFilter: React.FC = () => {
                     onSelectChange(e, quickFilterType)
                   }
                 />
-                <span className="text-sm text-gray-700">
+                <span className="text-sm text-gray-700 dark:text-gray-300">
                   {capitalize(quickFilterType)}
                 </span>
               </label>

@@ -39,7 +39,7 @@ const Description: React.FC<{ issue: IssueType }> = ({ issue }) => {
   }
   return (
     <Fragment>
-      <h2>Description</h2>
+      <h2 className="dark:text-gray-300">Description</h2>
       <div>
         {isEditing ? (
           <Editor
@@ -53,7 +53,7 @@ const Description: React.FC<{ issue: IssueType }> = ({ issue }) => {
             <EditorPreview
               action="description"
               content={content}
-              className="transition-all duration-200 hover:bg-gray-100"
+              className="transition-all duration-200 hover:bg-gray-100 dark:bg-transparent dark:hover:bg-gray-700 dark:hover:bg-opacity-60"
             />
           </div>
         )}

@@ -67,13 +67,13 @@ const ChildIssueList: React.FC<{
   }
   return (
     <Fragment>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between dark:text-gray-300">
         <h2>Child Issues</h2>
         <Button
           onClick={() => setIsEditing(true)}
           customColors
           customPadding
-          className="p-1 hover:bg-gray-100"
+          className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700"
         >
           <AiOutlinePlus />
         </Button>
@@ -116,7 +116,7 @@ const ChildIssue: React.FC<{ issue: IssueType }> = ({ issue }) => {
       data-state={issueKey == issue.key ? "selected" : "not-selected"}
       onClick={() => setIssueKey(issue.key)}
       className={clsx(
-        "group flex w-full max-w-full items-center justify-between border-[0.3px] border-gray-300 px-3 py-1.5 text-sm hover:bg-gray-50 [&[data-state=selected]]:bg-blue-100"
+        "group flex w-full max-w-full items-center justify-between border-[0.3px] border-gray-300 px-3 py-1.5 text-sm hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-opacity-5 [&[data-state=selected]]:bg-blue-100"
       )}
     >
       <div
@@ -126,7 +126,7 @@ const ChildIssue: React.FC<{ issue: IssueType }> = ({ issue }) => {
         <IssueIcon issueType={issue.type} />
         <div
           data-state={issue.status}
-          className="whitespace-nowrap text-sm text-gray-500 [&[data-state=DONE]]:line-through"
+          className="whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 [&[data-state=DONE]]:line-through"
         >
           {issue.key}
         </div>
@@ -150,7 +150,7 @@ const ChildIssue: React.FC<{ issue: IssueType }> = ({ issue }) => {
               e.stopPropagation();
               setIsEditing(!isEditing);
             }}
-            className="invisible w-0 px-0 group-hover:visible group-hover:w-fit group-hover:bg-transparent group-hover:px-1.5 group-hover:hover:bg-gray-200 "
+            className="invisible w-0 px-0 group-hover:visible group-hover:w-fit group-hover:bg-transparent group-hover:px-1.5 group-hover:hover:bg-gray-200 dark:group-hover:hover:bg-gray-600 dark:group-hover:hover:text-gray-400"
           >
             <MdEdit className="text-sm" />
           </Button>

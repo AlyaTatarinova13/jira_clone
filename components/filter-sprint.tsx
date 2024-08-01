@@ -30,10 +30,10 @@ const SprintFilter: React.FC = () => {
   }
   return (
     <Dropdown>
-      <DropdownTrigger className="rounded-[3px] [&[data-state=open]]:bg-gray-700 [&[data-state=open]]:text-white">
+      <DropdownTrigger className="rounded-[3px] [&[data-state=open]]:bg-gray-700 [&[data-state=open]]:text-white dark:text-gray-300 dark:[&[data-state=open]]:text-gray-300 dark:[&[data-state=open]]:bg-transparent">
         <Button
           customColors
-          className="flex items-center gap-x-2 transition-all duration-200 hover:bg-gray-200"
+          className="flex items-center gap-x-2 transition-all duration-200 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
         >
           <span className="text-sm">Sprint</span>
           <CountBall
@@ -48,13 +48,13 @@ const SprintFilter: React.FC = () => {
         <DropdownContent
           side="bottom"
           align="start"
-          className="z-10 mt-2 w-64 rounded-[3px] border-[0.3px] bg-white py-2 shadow-md"
+          className="z-10 mt-2 w-64 rounded-[3px] border-[0.3px] bg-white py-1 shadow-md dark:bg-gray-800"
         >
           {sprints?.filter(filterActiveSprints).map((sprint) => (
             <DropdownItem
               onSelect={(e) => e.preventDefault()}
               key={sprint.id}
-              className="px-3 py-1.5 text-sm hover:bg-gray-100"
+              className="px-3 py-1.5 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 onSelectChange(e, sprint)
               }
@@ -66,7 +66,7 @@ const SprintFilter: React.FC = () => {
                   checked={filterSprints.includes(sprint.id)}
                 />
                 <TooltipWrapper text={sprint.name}>
-                  <span className="text-sm text-gray-700">{sprint.name}</span>
+                  <span className="text-sm text-gray-700 dark:text-gray-300">{sprint.name}</span>
                 </TooltipWrapper>
               </div>
             </DropdownItem>

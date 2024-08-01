@@ -37,7 +37,7 @@ const SprintList: React.FC<{
     <Accordion
       onValueChange={setOpenAccordion}
       value={openAccordion}
-      className="overflow-hidden rounded-lg bg-gray-100 p-2"
+      className="overflow-hidden rounded-lg bg-gray-100 p-2 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
       type="single"
       collapsible
     >
@@ -117,18 +117,18 @@ const SprintListHeader: React.FC<{ issues: IssueType[]; sprint: Sprint }> = ({
         actionText="Delete"
         onAction={handleDeleteSprint}
       />
-      <div className="flex w-full min-w-max items-center justify-between pl-2 text-sm">
-        <AccordionTrigger className="flex w-full items-center font-medium [&[data-state=open]>svg]:rotate-90">
+      <div className="flex w-full min-w-max items-center justify-between pl-2 text-sm dark:hover:bg-gray-700 dark:hover:bg-opacity-50">
+        <AccordionTrigger className="flex w-full items-center font-medium  [&[data-state=open]>svg]:rotate-90">
           <Fragment>
             <FaChevronRight
-              className="mr-2 text-xs text-black transition-transform"
+              className="mr-2 text-xs text-black transition-transform dark:text-gray-300"
               aria-hidden
             />
             <div className="flex items-center gap-x-2">
               <div className="text-semibold whitespace-nowrap">
                 {sprint.name}
               </div>
-              <div className="flex items-center gap-x-3 whitespace-nowrap font-normal text-gray-500">
+              <div className="flex items-center gap-x-3 whitespace-nowrap font-normal text-gray-500 dark:text-gray-400">
                 <span>
                   {getFormattedDateRange(sprint.startDate, sprint.endDate)}
                 </span>
@@ -150,7 +150,7 @@ const SprintListHeader: React.FC<{ issues: IssueType[]; sprint: Sprint }> = ({
               asChild
               className="rounded-m flex items-center gap-x-1 px-1.5 py-0.5 text-xs font-semibold focus:ring-2"
             >
-              <div className="rounded-sm bg-gray-200 px-1.5 py-1.5 text-gray-600 hover:cursor-pointer hover:bg-gray-300 [&[data-state=open]]:bg-gray-700 [&[data-state=open]]:text-white">
+              <div className="rounded-sm bg-gray-200 px-1.5 py-1.5 text-gray-600 hover:cursor-pointer hover:bg-gray-700 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 [&[data-state=open]]:bg-gray-700 [&[data-state=open]]:text-white dark:[&[data-state=open]]:text-gray-300">
                 <BsThreeDots className="sm:text-xl" />
               </div>
             </DropdownTrigger>
@@ -168,7 +168,7 @@ const SprintActionButton: React.FC<{ sprint: Sprint; issues: IssueType[] }> = ({
   if (sprint.status === "ACTIVE") {
     return (
       <CompleteSprintModal issues={issues} sprint={sprint}>
-        <Button>
+        <Button className="dark:border-gray-900 dark:bg-gray-700 dark:bg-opacity-80 dark:text-gray-300">
           <span className="whitespace-nowrap">Complete sprint</span>
         </Button>
       </CompleteSprintModal>
@@ -178,7 +178,7 @@ const SprintActionButton: React.FC<{ sprint: Sprint; issues: IssueType[] }> = ({
   if (sprint.status === "PENDING") {
     return (
       <StartSprintModal issueCount={issues.length} sprint={sprint}>
-        <Button>
+        <Button className="dark:border-gray-900 dark:bg-gray-700 dark:bg-opacity-80 dark:text-gray-300">
           <span className="whitespace-nowrap">Start sprint</span>
         </Button>
       </StartSprintModal>

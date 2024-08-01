@@ -22,7 +22,7 @@ const ProgressBar: React.FC<{
         style={{ width: "100%" }}
         className={clsx(
           variant === "sm" ? "h-1" : "h-2.5",
-          "flex  gap-x-0.5 overflow-hidden rounded-full bg-white"
+          "flex gap-x-0.5 overflow-hidden rounded-full bg-white dark:bg-gray-700"
         )}
       >
         {statusCount.DONE ? (
@@ -53,13 +53,13 @@ const ProgressBar: React.FC<{
           >
             <div
               style={{ width: `${(statusCount.TODO / issues.length) * 100}%` }}
-              className="float-left h-full bg-todo"
+              className="float-left h-full bg-todo dark:bg-gray-600"
             />
           </TooltipWrapper>
         ) : null}
       </div>
       {variant === "lg" ? (
-        <div className="whitespace-nowrap text-sm text-gray-500">
+        <div className="whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
           {((statusCount.DONE / issues.length) * 100).toFixed(0)}% Done
         </div>
       ) : null}

@@ -71,7 +71,7 @@ const IssueDropdownMenu: React.FC<{
           side="top"
           sideOffset={5}
           align="end"
-          className="z-50 w-fit min-w-[100px] rounded-md border border-gray-300 bg-white pt-2 shadow-md"
+          className="z-50 w-fit min-w-[100px] rounded-md border border-gray-300 bg-white shadow-md dark:bg-gray-800"
         >
           <DropdownLabel className="p-2 text-xs font-normal text-gray-400">
             ACTIONS
@@ -83,7 +83,7 @@ const IssueDropdownMenu: React.FC<{
                 key={action.id}
                 textValue={action.label}
                 className={clsx(
-                  "border-transparent p-2 text-sm hover:cursor-default hover:bg-gray-100"
+                  "border-transparent p-2 text-sm hover:cursor-default dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
                 )}
               >
                 <span className={clsx("pr-2 text-sm")}>{action.label}</span>

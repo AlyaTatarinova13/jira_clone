@@ -432,7 +432,7 @@ export default function ToolbarPlugin(): JSX.Element {
   );
 
   return (
-    <div className="relative flex items-center justify-between border-b bg-white p-2">
+    <div className="relative flex items-center justify-between border-b bg-white p-2 dark:border-gray-600 dark:bg-black dark:bg-opacity-30 dark:text-gray-300">
       <button
         disabled={!canUndo || !isEditable}
         onClick={() => {
@@ -440,7 +440,7 @@ export default function ToolbarPlugin(): JSX.Element {
         }}
         title="Undo (⌘Z)"
         type="button"
-        className="rounded-md p-1.5 hover:bg-gray-200"
+        className="cursor-pointer rounded-md p-1.5 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
         aria-label="Undo"
       >
         <FiRotateCcw className="text-sm" />
@@ -452,7 +452,7 @@ export default function ToolbarPlugin(): JSX.Element {
         }}
         title="Redo (⌘Y)"
         type="button"
-        className="rounded-md p-1.5 hover:bg-gray-200"
+        className="cursor-pointer rounded-md p-1.5 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
         aria-label="Redo"
       >
         <FiRotateCw className="text-sm" />
@@ -501,7 +501,10 @@ export default function ToolbarPlugin(): JSX.Element {
             onClick={() => {
               activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
             }}
-            className={"rounded-md p-1.5 " + (isBold ? "bg-gray-200" : "")}
+            className={
+              "rounded-md p-1.5 " +
+              (isBold ? "bg-gray-200 dark:bg-gray-700 dark:bg-opacity-50" : "")
+            }
             title="Bold (⌘B)"
             type="button"
             aria-label="Format text as bold. Shortcut: ⌘B"
@@ -513,7 +516,12 @@ export default function ToolbarPlugin(): JSX.Element {
             onClick={() => {
               activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic");
             }}
-            className={"rounded-md p-1.5 " + (isItalic ? "bg-gray-200" : "")}
+            className={
+              "rounded-md p-1.5 " +
+              (isItalic
+                ? "bg-gray-200 dark:bg-gray-700 dark:bg-opacity-50"
+                : "")
+            }
             title="Italic (⌘I)"
             type="button"
             aria-label="Format text as italics. Shortcut: ⌘I"
@@ -525,7 +533,12 @@ export default function ToolbarPlugin(): JSX.Element {
             onClick={() => {
               activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline");
             }}
-            className={"rounded-md p-1.5 " + (isUnderline ? "bg-gray-200" : "")}
+            className={
+              "rounded-md p-1.5 " +
+              (isUnderline
+                ? "bg-gray-200 dark:bg-gray-700 dark:bg-opacity-50"
+                : "")
+            }
             title="Underline (⌘U)"
             type="button"
             aria-label="Format text as underline. Shortcut: ⌘U"
@@ -541,7 +554,10 @@ export default function ToolbarPlugin(): JSX.Element {
               );
             }}
             className={
-              "rounded-md p-1.5 " + (isStrikethrough ? "bg-gray-200" : "")
+              "rounded-md p-1.5 " +
+              (isStrikethrough
+                ? "bg-gray-200 dark:bg-gray-700 dark:bg-opacity-50"
+                : "")
             }
             title="Strikethrough (⌘K)"
             type="button"

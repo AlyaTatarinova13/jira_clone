@@ -35,7 +35,7 @@ const ClearFilters: React.FC = () => {
     <Button
       customColors
       onClick={clearAllFilters}
-      className="text-sm hover:bg-gray-200"
+      className="text-sm hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
     >
       Clear Filters
     </Button>

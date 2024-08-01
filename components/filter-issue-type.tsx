@@ -30,10 +30,10 @@ const IssueTypeFilter: React.FC = () => {
   }
   return (
     <Dropdown>
-      <DropdownTrigger className="rounded-[3px] [&[data-state=open]]:bg-gray-700 [&[data-state=open]]:text-white">
+      <DropdownTrigger className="dark:[&[data-state=open]]:text-gray-300 dark:text-gray-300 rounded-[3px] [&[data-state=open]]:bg-gray-700  dark:[&[data-state=open]]:bg-transparent">
         <Button
           customColors
-          className="flex items-center  gap-x-2 transition-all duration-200 hover:bg-gray-200"
+          className="flex items-center gap-x-2 transition-all duration-200 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
         >
           <span className="text-sm">Type</span>
           <CountBall
@@ -48,13 +48,13 @@ const IssueTypeFilter: React.FC = () => {
         <DropdownContent
           side="bottom"
           align="start"
-          className="z-10 mt-2 w-52 rounded-[3px] border-[0.3px] bg-white py-4 shadow-md"
+          className="z-10 mt-2 w-52 rounded-[3px] border-[0.3px] bg-white py-1 shadow-md dark:bg-gray-800"
         >
           {ISSUE_TYPES.map((type) => (
             <DropdownItem
               onSelect={(e) => e.preventDefault()}
               key={type}
-              className="px-3 py-1.5 text-sm hover:bg-gray-100"
+              className="px-3 py-1.5 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 onSelectChange(e, type)
               }
@@ -72,7 +72,7 @@ const IssueTypeFilter: React.FC = () => {
 
                 <IssueIcon issueType={type} />
                 <TooltipWrapper text={capitalize(type)}>
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-gray-700 dark:text-gray-300">
                     {capitalize(type)}
                   </span>
                 </TooltipWrapper>

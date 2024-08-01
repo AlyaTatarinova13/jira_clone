@@ -54,7 +54,7 @@ const SearchBar: React.FC<{
         data-state={isFocused ? "focused" : "not-focused"}
         className={clsx(
           fullWidth ? " w-full min-w-max" : "[&[data-state=focused]]:pr-8",
-          "inset-2 h-full rounded-sm border-2 border-gray-300 bg-gray-50 px-2 py-2 text-sm outline-blue-400 transition-all duration-300 hover:bg-gray-200 focus:bg-white focus:outline-2  [&[data-state=focused]]:placeholder:text-gray-500 [&[data-state=not-focused]]:placeholder:text-transparent"
+          "inset-2 h-full rounded-sm border-2 border-gray-300 bg-gray-50 px-2 py-2 text-sm outline-blue-400 transition-all duration-300 hover:bg-gray-200 focus:bg-white focus:outline-2 dark:focus:border-blue-400 dark:focus:outline-none dark:focus-visible::outline-none dark:bg-gray-700 dark:focus:bg-gray-800 dark:focus:bg-opacity-40 dark:border-gray-700 dark:bg-opacity-40 dark:text-gray-300 [&[data-state=focused]]:placeholder:text-gray-500 [&[data-state=not-focused]]:placeholder:text-transparent"
         )}
         value={localSearch}
         onChange={handleSearch}

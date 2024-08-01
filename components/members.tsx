@@ -39,7 +39,7 @@ const Members = () => {
               data-state={
                 assignees.includes(member.id) ? "selected" : "not-selected"
               }
-              className="-mx-1 flex border-spacing-2 rounded-full border-2 border-transparent bg-white p-0.5 transition-all duration-75 hover:-mt-1.5 [&[data-state=selected]]:border-inprogress"
+              className="-mx-1 flex border-spacing-2 rounded-full border-2 border-transparent bg-white p-0.5 transition-all duration-75 hover:-mt-1.5 dark:bg-gray-700 [&[data-state=selected]]:border-inprogress"
             >
               <Avatar src={member.avatar} alt={`${member.name}`} />
             </Button>
@@ -50,7 +50,7 @@ const Members = () => {
       <NotImplemented feature="add people">
         <button>
           <AddPeopleIcon
-            className="ml-3 rounded-full bg-gray-200 p-1 text-gray-500"
+            className="ml-3 rounded-full  bg-gray-200 p-1 text-gray-500 dark:bg-gray-700 dark:text-gray-400"
             size={35}
           />
         </button>

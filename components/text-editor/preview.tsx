@@ -18,19 +18,19 @@ export const EditorPreview: React.FC<{
 
   return (
     <EditorComposer readonly={true} jsonState={jsonState}>
-      <div className="relative w-full rounded-[3px] bg-white">
+      <div className="relative w-full rounded-[3px] bg-white dark:bg-transparent">
         <RichTextPlugin
           ErrorBoundary={LexicalErrorBoundary}
           contentEditable={
             <ContentEditable
               className={clsx(
-                "w-full resize-none overflow-hidden text-ellipsis rounded-[3px] outline-none",
+                "w-full  dark:text-gray-300 resize-none overflow-hidden text-ellipsis rounded-[3px] outline-none",
                 className
               )}
             />
           }
           placeholder={
-            <div className="pointer-events-none absolute left-0 top-0 flex h-full select-none items-center px-1 text-sm text-gray-500">
+            <div className="pointer-events-none absolute left-0 top-0 flex h-full select-none dark:text-gray-400 items-center px-1 text-sm text-gray-500">
               Add your {action} here...
             </div>
           }

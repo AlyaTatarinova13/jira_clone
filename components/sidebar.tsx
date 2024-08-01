@@ -50,16 +50,16 @@ const Sidebar: React.FC = () => {
     },
   ];
   return (
-    <div className="flex h-full w-64 flex-col gap-y-5 bg-gray-50 p-3 shadow-inner">
+    <div className="flex h-full w-64 flex-col gap-y-5 border-r bg-gray-50  p-3 dark:border-gray-600 dark:bg-transparent">
       <div className="my-5 flex items-center gap-x-2 px-3">
         <div className="mt-1 flex items-center justify-center rounded-sm bg-[#FF5630] p-1 text-xs font-bold text-white">
           <FaChessPawn className="aspect-square text-2xl" />
         </div>
         <div>
-          <h2 className="-mb-[0.5px] text-sm font-semibold text-gray-600">
+          <h2 className="-mb-[0.5px] text-sm font-semibold text-gray-600 dark:text-gray-300">
             {project?.name ?? "Project Name"}
           </h2>
-          <p className="text-xs text-gray-500">Software Project</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Software Project</p>
         </div>
       </div>
       <NavList label={"PLANNING"} items={planningItems} />
@@ -74,7 +74,7 @@ const NavList: React.FC<{ items: NavItemType[]; label: string }> = ({
 }) => {
   const [isVisible, setIsVisible] = useState(true);
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className="flex flex-col gap-y-2 rounded-2xl p-5 bg-gray-100 dark:bg-gray-800 dark:bg-opacity-50">
       <NavListHeader
         label={label}
         isVisible={isVisible}
@@ -107,11 +107,11 @@ const NavListHeader: React.FC<{
     <button
       data-state={isVisible ? "open" : "closed"}
       onClick={() => setIsVisible(!isVisible)}
-      className="invisible group-hover:visible [&[data-state=open]>svg]:rotate-90"
+      className="invisible group-hover:visible [&[data-state=open]>svg]:rotate-90 dark:text-gray-300"
     >
-      <FaChevronRight className="text-xs transition-transform" />
+      <FaChevronRight className="text-xs transition-transform dark:text-gray-300" />
     </button>
-    <span className="text-xs font-bold text-gray-700">{label}</span>
+    <span className="text-xs font-bold text-gray-700 dark:text-gray-300">{label}</span>
   </div>
 );
 
@@ -122,7 +122,7 @@ const NavItem: React.FC<{ item: NavItemType; disabled?: boolean }> = ({
   const currentPath = usePathname();
   if (disabled) {
     return (
-      <div className="w-full rounded-lg text-gray-600 hover:cursor-not-allowed">
+      <div className="w-full rounded-lg text-gray-600 hover:cursor-not-allowed dark:text-gray-400">
         <div className="flex w-full items-center gap-x-3 border-l-4 border-transparent px-2 py-2">
           <item.icon />
           <span className="text-sm">{item.label}</span>
@@ -139,7 +139,7 @@ const NavItem: React.FC<{ item: NavItemType; disabled?: boolean }> = ({
     >
       <NavigationMenuLink
         active={currentPath === item.href}
-        className="flex w-full rounded-sm border-transparent py-2 [&[data-active]]:border-l-blue-700 [&[data-active]]:bg-blue-100 [&[data-active]]:text-blue-700"
+        className="flex w-full rounded-sm border-transparent py-2 [&[data-active]]:border-l-blue-700  [&[data-active]]:bg-blue-100 [&[data-active]]:text-blue-700 dark:text-gray-400  [&[data-active]]:dark:bg-blue-950"
       >
         <div className="flex w-full items-center gap-x-3 border-l-4 border-inherit bg-inherit px-2">
           <item.icon />

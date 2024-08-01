@@ -68,7 +68,10 @@ const IssueList: React.FC<{ sprintId: string | null; issues: IssueType[] }> = ({
             className={clsx(issues.length == 0 && "min-h-[1px]")}
           >
             <div
-              className={clsx(issues.length && "border-[0.3px]", "divide-y ")}
+              className={clsx(
+                issues.length && "border-[0.3px] dark:border-gray-600",
+                "divide-y "
+              )}
             >
               {issues
                 .sort((a, b) => a.sprintPosition - b.sprintPosition)
@@ -85,10 +88,10 @@ const IssueList: React.FC<{ sprintId: string | null; issues: IssueType[] }> = ({
         onClick={() => setIsEditing(true)}
         data-state={isEditing ? "closed" : "open"}
         customColors
-        className="my-1 flex w-full bg-transparent hover:bg-gray-200 [&[data-state=closed]]:hidden"
+        className="my-1 flex w-full bg-transparent hover:bg-gray-200 dark:hover:bg-gray-700 [&[data-state=closed]]:hidden"
       >
-        <AiOutlinePlus className="text-sm" />
-        <span className="text-sm">Create Issue</span>
+        <AiOutlinePlus className="text-sm  dark:text-gray-300" />
+        <span className="text-sm  dark:text-gray-300">Create Issue</span>
       </Button>
 
       <EmtpyIssue

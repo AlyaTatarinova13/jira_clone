@@ -66,8 +66,8 @@ const IssueAssigneeSelect: React.FC<{
         className={clsx(
           avatarOnly
             ? "rounded-full transition-all duration-200 hover:brightness-75"
-            : "-ml-2 rounded-[3px] py-1 pl-2 pr-8 hover:bg-gray-200",
-          "flex w-fit items-center gap-x-1 whitespace-nowrap"
+            : "-ml-2 rounded-[3px] py-1 pl-2 pr-8 hover:bg-gray-200 dark:hover:bg-gray-700",
+          "flex w-fit items-center gap-x-1 whitespace-nowrap dark:text-gray-300"
         )}
       >
         <SelectValue asChild>
@@ -87,7 +87,7 @@ const IssueAssigneeSelect: React.FC<{
       </SelectTrigger>
       <SelectPortal className="z-50 w-full">
         <SelectContent position="popper">
-          <SelectViewport className="w-full rounded-md border border-gray-300 bg-white pt-2 shadow-md">
+          <SelectViewport className="w-full rounded-md border border-gray-300 bg-white pt-2 shadow-md dark:bg-gray-800">
             <SelectGroup>
               {members &&
                 [...members, unassigned].map((member) => (
@@ -96,7 +96,7 @@ const IssueAssigneeSelect: React.FC<{
                     value={member.id}
                     data-state={member.id == selected ? "checked" : "unchecked"}
                     className={clsx(
-                      "border-l-[3px] border-transparent py-2 pl-2 pr-8 text-sm hover:cursor-default hover:border-blue-600 hover:bg-gray-100 focus:outline-none [&[data-state=checked]]:border-blue-600"
+                      "border-l-[3px] border-transparent py-2 pl-2 pr-8 text-sm hover:cursor-default hover:border-blue-600 dark:text-gray-300 dark:hover:text-white hover:bg-gray-100 focus:outline-none dark:hover:bg-gray-700 [&[data-state=checked]]:border-blue-600 dark:[&[data-state=checked]]:bg-gray-700 dark:[&[data-state=checked]]:text-white"
                     )}
                   >
                     <div className="flex items-center">

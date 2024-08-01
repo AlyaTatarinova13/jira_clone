@@ -69,7 +69,7 @@ const BacklogListHeader: React.FC<{ issues: IssueType[] }> = ({ issues }) => {
       </AccordionTrigger>
       <div className="flex items-center gap-x-2 py-2">
         <IssueStatusCount issues={issues} />
-        <Button onClick={handleCreateSprint}>
+        <Button className="dark:border-gray-900 dark:bg-gray-700 dark:bg-opacity-80 dark:text-gray-300" onClick={handleCreateSprint}>
           <span className="whitespace-nowrap">Create Sprint</span>
         </Button>
       </div>

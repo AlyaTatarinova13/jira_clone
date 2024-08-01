@@ -26,9 +26,9 @@ const BacklogHeader: React.FC<{ project: Project }> = ({ project }) => {
           <ClearFilters />
         </div>
         <NotImplemented feature="insights">
-          <Button className="flex items-center gap-x-2">
-            <BiLineChart className="text-gray-900" />
-            <span className="text-sm text-gray-900">Insights</span>
+          <Button className="flex items-center gap-x-2 dark:border-gray-900 dark:bg-gray-700  dark:bg-opacity-60">
+            <BiLineChart className="text-gray-900 dark:text-gray-300" />
+            <span className="text-sm text-gray-900 dark:text-gray-300">Insights</span>
           </Button>
         </NotImplemented>
       </div>

@@ -24,7 +24,7 @@ const IssuePath: React.FC<{
           <Button
             onClick={() => setIssueKey(issue.key)}
             customColors
-            className=" bg-transparent text-xs text-gray-500 underline-offset-2 hover:underline"
+            className=" bg-transparent text-xs text-gray-500 dark:text-gray-300 underline-offset-2 hover:underline"
           >
             <span className="whitespace-nowrap">{issue.key}</span>
           </Button>
@@ -91,7 +91,7 @@ const ParentContainer: React.FC<{
         {children}
         <IssueLink issue={issue.parent} setIssueKey={setIssueKey} />
       </div>
-      <span className="py-1.5 text-gray-500">/</span>
+      <span className="py-1.5 text-gray-500 dark:text-gray-300">/</span>
       <div className="relative flex items-center">
         <IssueSelectType
           key={issue.id + issue.type}
@@ -116,7 +116,7 @@ const IssueLink: React.FC<{
       <Button
         onClick={() => setIssueKey(issue?.key ?? null)}
         customColors
-        className=" bg-transparent text-xs text-gray-500 underline-offset-2 hover:underline"
+        className=" bg-transparent text-xs text-gray-500 dark:text-gray-300 underline-offset-2 hover:underline"
       >
         <span className="whitespace-nowrap">{issue?.key}</span>
       </Button>
@@ -126,7 +126,7 @@ const IssueLink: React.FC<{
 
 const AddEpic: React.FC = () => {
   return (
-    <div className="flex items-center font-normal text-gray-500">
+    <div className="flex items-center font-normal text-gray-500 dark:text-gray-300">
       <AiOutlinePlus className="text-sm" />
       <span>Add Epic</span>
     </div>

@@ -52,7 +52,7 @@ export function DropDownItem({
   return (
     <button
       className={
-        "flex items-center gap-x-2 whitespace-nowrap rounded-[3px] px-2 py-0.5 text-start text-sm hover:bg-gray-200"
+        "flex items-center gap-x-2 whitespace-nowrap rounded-[3px] px-2 py-0.5 text-start text-sm hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
       }
       onClick={onClick}
       ref={ref}
@@ -129,7 +129,7 @@ function DropDownItems({
   return (
     <DropDownContext.Provider value={contextValue}>
       <div
-        className="z-50 flex flex-col rounded-[3px] bg-white  p-1.5 shadow-md"
+        className="z-50 flex flex-col rounded-[3px] bg-white  p-1.5 shadow-md dark:bg-gray-900"
         ref={dropDownRef}
         onKeyDown={handleKeyDown}
       >
@@ -207,7 +207,7 @@ export default function DropDown({
       <button
         disabled={disabled}
         aria-label={buttonAriaLabel || buttonLabel}
-        className="flex items-center gap-x-1 rounded-md p-1.5 text-xs hover:bg-gray-200"
+        className="flex items-center gap-x-1 rounded-md p-1.5 text-xs hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:bg-opacity-50 "
         onClick={() => setShowDropDown(!showDropDown)}
         ref={buttonRef}
       >
@@ -218,7 +218,7 @@ export default function DropDown({
       {
         showDropDown && (
           // createPortal(
-          <div className="absolute right-0 top-12 z-50">
+          <div className="absolute right-0 top-10 z-50">
             <DropDownItems dropDownRef={dropDownRef} onClose={handleClose}>
               {children}
             </DropDownItems>

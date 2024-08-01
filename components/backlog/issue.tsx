@@ -17,6 +17,7 @@ import { type IssueType } from "@/utils/types";
 import { hasChildren, isEpic, hexToRgba } from "@/utils/helpers";
 import { IssueAssigneeSelect } from "../issue/issue-select-assignee";
 import { DARK_COLORS, LIGHT_COLORS } from "../color-picker";
+import { useTheme } from "next-themes";
 
 const Issue: React.FC<{
   issue: IssueType;
@@ -38,9 +39,10 @@ const Issue: React.FC<{
           {...dragHandleProps}
           className={clsx(
             isDragging
-              ? "border-[0.3px] border-gray-300 bg-blue-100"
-              : "bg-white",
-            "group flex w-full max-w-full items-center justify-between  px-3 py-1.5 text-sm hover:bg-gray-50 [&[data-state=selected]]:bg-blue-100"
+              ? "border-[0.3px] border-gray-300 bg-blue-100 dark:border-gray-950 dark:bg-gray-700 dark:shadow-gray-900"
+              : // : "bg-white dark:bg-transparent",
+                "",
+            "group flex w-full max-w-full items-center justify-between px-3 py-1.5  text-sm hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-opacity-5 [&[data-state=selected]]:bg-blue-100 dark:[&[data-state=selected]]:bg-gray-700"
           )}
         >
           <div
@@ -50,7 +52,7 @@ const Issue: React.FC<{
             <IssueIcon issueType={issue.type} />
             <div
               data-state={issue.status}
-              className="whitespace-nowrap text-gray-500 [&[data-state=DONE]]:line-through"
+              className="whitespace-nowrap text-gray-500 dark:text-gray-300 [&[data-state=DONE]]:line-through"
             >
               {issue.key}
             </div>
@@ -74,7 +76,7 @@ const Issue: React.FC<{
                   e.stopPropagation();
                   setIsEditing(!isEditing);
                 }}
-                className="invisible w-0 px-0 group-hover:visible group-hover:w-fit group-hover:bg-transparent group-hover:px-1.5 group-hover:hover:bg-gray-200 "
+                className="invisible w-0 px-0 group-hover:visible group-hover:w-fit group-hover:bg-transparent group-hover:px-1.5 group-hover:hover:bg-gray-200 dark:group-hover:hover:bg-gray-600 dark:group-hover:hover:text-gray-400 "
               >
                 <MdEdit className="text-sm" />
               </Button>
@@ -99,7 +101,7 @@ const Issue: React.FC<{
                 asChild
                 className="rounded-m flex items-center gap-x-2 bg-opacity-30 px-1.5 text-xs font-semibold focus:ring-2 "
               >
-                <div className="invisible rounded-sm px-1.5 py-1.5 text-gray-700 group-hover:visible group-hover:bg-gray-200 group-hover:hover:bg-gray-300 [&[data-state=open]]:visible [&[data-state=open]]:bg-gray-700 [&[data-state=open]]:text-white">
+                <div className="invisible rounded-sm px-1.5 py-1.5 text-gray-700 group-hover:visible group-hover:bg-gray-200 group-hover:hover:bg-gray-300 dark:text-gray-400 dark:group-hover:bg-gray-700 dark:group-hover:hover:bg-gray-700 [&[data-state=open]]:visible [&[data-state=open]]:bg-gray-700 [&[data-state=open]]:text-white dark:[&[data-state=open]]:text-gray-300">
                   <BsThreeDots className="sm:text-xl" />
                 </div>
               </DropdownTrigger>
@@ -115,24 +117,32 @@ export const EpicName: React.FC<{
   issue: IssueType["parent"];
   className?: string;
 }> = ({ issue, className }) => {
+  const { theme } = useTheme();
+
   const lightColor = LIGHT_COLORS.find(
     (color) => color.hex == issue.sprintColor
   );
-  const bgColor = hexToRgba(issue.sprintColor, !!lightColor ? 0.5 : 1);
+
+  const bgColor =
+    theme === "dark" && calcTextColor() !== "#fff"
+      ? calcTextColor()
+      : hexToRgba(issue.sprintColor, !!lightColor ? 0.5 : 1);
 
   function calcTextColor() {
     if (lightColor) {
       return DARK_COLORS.find((color) => color.label == lightColor.label)?.hex;
     } else {
-      return "white";
+      return "#fff";
     }
   }
+
+  const textColor = theme === "dark" ? "#fff" : calcTextColor();
 
   return (
     <div
       style={{
         backgroundColor: bgColor,
-        color: calcTextColor(),
+        color: textColor,
       }}
       className={clsx(
         "whitespace-nowrap rounded-[3px] px-2 text-xs font-bold",

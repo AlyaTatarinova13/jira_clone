@@ -40,29 +40,29 @@ const IssueDetailsInfoAccordion: React.FC<{ issue: IssueType }> = ({
     <Accordion
       onValueChange={setOpenAccordion}
       value={openAccordion}
-      className="my-3 w-min min-w-full rounded-[3px] border"
+      className="my-3 w-min min-w-full rounded-[3px] border dark:border-gray-600"
       type="single"
       collapsible
     >
       <AccordionItem value={"details"}>
-        <AccordionTrigger className="flex w-full items-center justify-between p-2 font-medium hover:bg-gray-100 [&[data-state=open]>svg]:rotate-180 [&[data-state=open]]:border-b">
+        <AccordionTrigger className="flex w-full items-center justify-between p-2 font-medium hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:bg-opacity-50 [&[data-state=open]>svg]:rotate-180 [&[data-state=open]]:border-b dark:border-gray-600">
           <div className="flex items-center gap-x-1">
-            <span className="text-sm">Details</span>
-            <span className="text-xs text-gray-500">
+            <span className="text-sm dark:text-gray-300">Details</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">
               (Assignee, Sprint, Reporter)
             </span>
           </div>
           <FaChevronUp
-            className="mr-2 text-xs text-black transition-transform"
+            className="mr-2 text-xs text-black transition-transform dark:text-gray-300"
             aria-hidden
           />
         </AccordionTrigger>
-        <AccordionContent className="flex flex-col bg-white px-3 [&[data-state=open]]:py-2">
+        <AccordionContent className="flex flex-col bg-white dark:bg-gray-800 px-3 [&[data-state=open]]:py-2">
           <div
             data-state={issue.assignee ? "assigned" : "unassigned"}
             className="my-2 grid grid-cols-3 [&[data-state=assigned]]:items-center"
           >
-            <span className="text-sm font-semibold text-gray-600">
+            <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">
               Assignee
             </span>
             <div className="flex flex-col">
@@ -79,16 +79,16 @@ const IssueDetailsInfoAccordion: React.FC<{ issue: IssueType }> = ({
             </div>
           </div>
           <div className="my-4 grid grid-cols-3 items-center">
-            <span className="text-sm font-semibold text-gray-600">Sprint</span>
+            <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Sprint</span>
             <div className="flex items-center">
-              <span className="text-sm text-gray-700">
+              <span className="text-sm text-gray-700 dark:text-gray-300">
                 {sprints?.find((sprint) => sprint?.id == issue.sprintId)
                   ?.name ?? "None"}
               </span>
             </div>
           </div>
           <div className="my-2 grid grid-cols-3  items-center">
-            <span className="text-sm font-semibold text-gray-600">
+            <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">
               Reporter
             </span>
             <div className="flex items-center gap-x-3 ">
@@ -96,7 +96,7 @@ const IssueDetailsInfoAccordion: React.FC<{ issue: IssueType }> = ({
                 src={issue.reporter?.avatar}
                 alt={`${issue.reporter?.name ?? "Unassigned"}`}
               />
-              <span className="whitespace-nowrap text-sm">
+              <span className="whitespace-nowrap text-sm dark:text-gray-300">
                 {issue.reporter?.name}
               </span>
             </div>

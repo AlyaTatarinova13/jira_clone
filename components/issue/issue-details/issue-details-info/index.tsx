@@ -56,10 +56,10 @@ const SmallIssueDetailsInfo = React.forwardRef<
           role="button"
           onClick={() => setIsEditing(true)}
           data-state={isEditing ? "editing" : "notEditing"}
-          className="w-full transition-all [&[data-state=notEditing]]:hover:bg-gray-100"
+          className="w-full transition-all [&[data-state=notEditing]]:hover:bg-gray-100 dark:[&[data-state=notEditing]]:hover:bg-transparent"
         >
           <IssueTitle
-            className="mr-1 py-1"
+            className="mr-1 py-1 "
             key={issue.id + issue.name}
             isEditing={isEditing}
             setIsEditing={setIsEditing}
@@ -80,7 +80,10 @@ const SmallIssueDetailsInfo = React.forwardRef<
           variant="lg"
         />
         <NotImplemented>
-          <Button customColors className="hover:bg-gray-200">
+          <Button
+            customColors
+            className="hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+          >
             <div className="flex items-center">
               <LightningIcon className="mt-0.5" />
               <span>Actions</span>
@@ -131,7 +134,7 @@ const LargeIssueDetails = React.forwardRef<
             role="button"
             onClick={() => setIsEditing(true)}
             data-state={isEditing ? "editing" : "notEditing"}
-            className="w-full transition-all [&[data-state=notEditing]]:hover:bg-gray-100"
+            className="w-full transition-all dark:text-gray-300 [&[data-state=notEditing]]:hover:bg-gray-100 dark:[&[data-state=notEditing]]:hover:bg-gray-700 dark:[&[data-state=notEditing]]:hover:bg-opacity-60"
           >
             <IssueTitle
               className="mr-1 py-1"
@@ -160,7 +163,7 @@ const LargeIssueDetails = React.forwardRef<
         <Comments issue={issue} />
       </div>
 
-      <div className="mt-4 bg-white pl-3">
+      <div className="mt-4 bg-white pl-3 dark:bg-transparent">
         <div className="relative flex items-center gap-x-3">
           <IssueSelectStatus
             key={issue.id + issue.status}
@@ -169,7 +172,10 @@ const LargeIssueDetails = React.forwardRef<
             variant="lg"
           />
           <NotImplemented>
-            <Button customColors className="hover:bg-gray-200">
+            <Button
+              customColors
+              className="hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+            >
               <div className="flex items-center">
                 <LightningIcon className="mt-0.5" />
                 <span>Actions</span>

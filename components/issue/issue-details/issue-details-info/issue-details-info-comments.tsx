@@ -59,8 +59,8 @@ const Comments: React.FC<{ issue: IssueType }> = ({ issue }) => {
   }
   return (
     <Fragment>
-      <h2>Comments</h2>
-      <div className="sticky bottom-0 mb-5 w-full bg-white">
+      <h2 className="dark:text-gray-300">Comments</h2>
+      <div className="sticky bottom-0 mb-5 w-full bg-white dark:bg-inherit">
         <div ref={scrollRef} id="dummy-scroll-div" />
         {isWritingComment ? (
           <Editor
@@ -115,10 +115,10 @@ const CommentPreview: React.FC<{
       />
       <div className="w-full">
         <div className="flex items-center gap-x-3 text-xs">
-          <span className="font-semibold text-gray-600 ">
+          <span className="font-semibold text-gray-600 dark:text-gray-300">
             {comment.author?.name}
           </span>
-          <span className="text-gray-500">
+          <span className="text-gray-500 dark:text-gray-400">
             {dayjs(comment.createdAt).fromNow()}
           </span>
 
@@ -156,13 +156,13 @@ const CommentPreview: React.FC<{
             <Button
               onClick={() => setIsEditing(true)}
               customColors
-              className="bg-transparent text-xs font-medium text-gray-500 underline-offset-2 hover:underline"
+              className="pl-0 bg-transparent text-xs font-medium text-gray-500 underline-offset-2 hover:underline dark:text-gray-400"
             >
               Edit
             </Button>
             <Button
               customColors
-              className="bg-transparent text-xs font-medium text-gray-500 underline-offset-2 hover:underline"
+              className="pl-0 bg-transparent text-xs font-medium text-gray-500 underline-offset-2 hover:underline dark:text-gray-400"
             >
               Delete
             </Button>
@@ -202,12 +202,12 @@ const AddComment: React.FC<{
           type="text"
           id="add-comment"
           placeholder="Add a comment..."
-          className="w-full rounded-[3px] border border-gray-300 px-4 py-2 placeholder:text-sm"
+          className="dark:focus-visible::outline-none w-full rounded-[3px] border border-gray-300 px-4 py-2 placeholder:text-sm dark:border-gray-700 dark:bg-gray-700 dark:bg-opacity-40 dark:text-gray-300 dark:focus:border-blue-400 dark:focus:bg-gray-800 dark:focus:bg-opacity-40 dark:focus:outline-none"
         />
-        <p className="my-2 text-xs text-gray-500">
+        <p className="my-2 text-xs text-gray-500 dark:text-gray-400">
           <span className="font-bold">Pro tip:</span>
           <span> press </span>
-          <span className="rounded-[3px] bg-gray-300 px-1 py-0.5 font-bold">
+          <span className="rounded-[3px] bg-gray-300 px-1 py-0.5 font-bold dark:bg-gray-700 dark:bg-opacity-80 dark:text-gray-300">
             M
           </span>
           <span> to comment </span>

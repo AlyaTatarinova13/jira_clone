@@ -44,7 +44,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className="min-h-dvh bg-white dark:bg-black">
+      <body className="min-h-dvh dark:bg-gray-700  dark:bg-opacity-30">
         <ClerkProvider>
           <QueryProvider>
             <AuthModalProvider>

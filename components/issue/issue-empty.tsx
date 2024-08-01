@@ -70,7 +70,7 @@ const EmtpyIssue: React.FC<{
     <div
       {...props}
       className={clsx(
-        "relative flex items-center gap-x-2 border-2 border-blue-400 bg-white p-1.5",
+        "relative flex items-center gap-x-2 border-2 border-blue-400 bg-white p-1.5 dark:bg-gray-800",
         className
       )}
     >
@@ -94,7 +94,7 @@ const EmtpyIssue: React.FC<{
         type="text"
         id="empty-issue-input"
         placeholder="What needs to be done?"
-        className=" w-full pl-2 pr-20 text-sm focus:outline-none"
+        className=" w-full py-2 pl-2 pr-20 text-sm focus:outline-none dark:bg-gray-700 dark:bg-opacity-40 dark:text-gray-300 dark:focus:bg-gray-800 dark:focus:bg-opacity-40"
         value={name}
         onChange={(e) => setName(e.currentTarget.value)}
         onKeyDown={handleCreateIssue}
@@ -106,13 +106,13 @@ const EmtpyIssue: React.FC<{
       ) : (
         <div className="absolute right-2 z-10 flex gap-x-1">
           <Button
-            className="aspect-square shadow-md"
+            className="aspect-square shadow-md dark:border-gray-900 dark:bg-gray-700 dark:bg-opacity-80 dark:text-gray-300"
             onClick={() => onCancel()}
           >
             <MdClose className="text-sm" />
           </Button>
           <Button
-            className="aspect-square shadow-md"
+            className="aspect-square shadow-md dark:border-gray-900 dark:bg-gray-700 dark:bg-opacity-80 dark:text-gray-300"
             onClick={() =>
               onCreate({
                 name,

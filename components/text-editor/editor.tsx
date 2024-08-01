@@ -44,7 +44,7 @@ export const Editor: React.FC<{
     <Fragment>
       <div
         className={clsx(
-          "w-full rounded-[3px] border border-gray-200 bg-white shadow-sm",
+          "w-full rounded-[3px] border border-gray-200 bg-white shadow-sm dark:border-gray-600 dark:bg-gray-900 dark:bg-opacity-40",
           className
         )}
       >
@@ -54,10 +54,10 @@ export const Editor: React.FC<{
             <RichTextPlugin
               ErrorBoundary={LexicalErrorBoundary}
               contentEditable={
-                <ContentEditable className="min-h-[100px] w-full resize-none overflow-hidden text-ellipsis px-2.5 py-4 outline-none" />
+                <ContentEditable className="min-h-[100px] w-full resize-none overflow-hidden text-ellipsis px-2.5 py-4 outline-none dark:text-gray-300" />
               }
               placeholder={
-                <div className="pointer-events-none absolute top-6 select-none px-3 text-sm text-gray-500">
+                <div className="pointer-events-none absolute top-6 select-none px-3 text-sm  dark:text-gray-400">
                   Add your {action} here...
                 </div>
               }
@@ -86,7 +86,7 @@ export const Editor: React.FC<{
           onClick={onCancel}
           customColors
           customPadding
-          className="px-2.5 py-1.5 text-sm font-medium hover:bg-gray-200"
+          className="px-2.5 py-1.5 text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
         >
           Cancel
         </Button>
