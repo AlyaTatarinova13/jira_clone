@@ -10,6 +10,7 @@ The source repository is here `https://github.com/sebastianfdz/jira_clone`.
 - added new section Quick filters;
 - added new filters: "My issues only" and "Recently updated"
 - fixed errors in console related to displaying checkboxes
+- added dark theme
 
 ![App screenshot](./assets/readme/quick-filters.png)
 
